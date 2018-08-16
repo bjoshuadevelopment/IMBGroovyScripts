@@ -7,8 +7,8 @@ def sql(s) { admin.executeSQL(s,false) };
  -due to the missing data on 6464 i added person_id and limit for easy of changes observation.
  **/
 // select obs that have specified question concept that are voided and with the voided reason.
-rs = sql("""  SELECT  person_id,concept_id,encounter_id,value_coded  from obs where  concept_id=2065 and voided=1 and person_id=98392 and  void_reason='Changed obs Value coded due to wrong date entery in forms'
-  limit 100 """);
+rs = sql("""  SELECT  person_id,concept_id,encounter_id,value_coded  from obs where  concept_id=2065 and voided=1 and  void_reason='Changed obs Value coded due to wrong date entery in forms'
+   """);
 //loop through the results and provided values of an obs that will be based on to loop for related one to void.
 rs.each {
     row ->(pr,conc,enc,vC) = row
@@ -24,7 +24,7 @@ rs.each {
 
             // checking if the obs have the same value coded, encouter same as the base obs and which are not voided
             if (o.getValueCoded()==currentValueCodedId && o.isVoided()==false && o.getEncounter()== currentEncounterId){
-                //obs.voidObs(o, 'groovy error correction with this message(Changed obs Value coded due to wrong date entery in forms)')
+                obs.voidObs(o, 'groovy error correction with this message(Changed obs Value coded due to wrong date entery in forms)')
                 j++;
             }
 
