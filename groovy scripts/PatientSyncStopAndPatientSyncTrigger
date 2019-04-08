@@ -48,7 +48,7 @@ if(patientUuid != null){
     println "Number of changed records : ${changedRecords}";
 
 
-    println "End";
+    println "Patient records stop from syncing";
 
 
 */
@@ -78,7 +78,7 @@ countTTNotsupposedtosync
 changedRecords = (countTTNotsupposedtosync - countCurrentlyNotsupposedtosync);
 println "Number of changed records : ${changedRecords[][]}";
 
-println "End";
+    println "Patient records stop from syncing";
 */
 
 
