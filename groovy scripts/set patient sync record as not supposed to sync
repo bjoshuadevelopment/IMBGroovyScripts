@@ -1,11 +1,11 @@
 /*NOTE:
-There are two parts in this groovy,one that is supposed to be run on production and another to child serve.
+There are two commented parts in this groovy,one that is supposed to be run on production and another to child serve.
 so you will have to uncomment the one you need and comment another.
 
 */
 
 // plz set the patient uuid
-PatientUuid='58dc9ed9-4246-472c-bba6-bad2ca02b5e1';
+PatientUuid= null;
 
 
 if(PatientUuid){
