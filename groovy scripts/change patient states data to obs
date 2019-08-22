@@ -28,15 +28,21 @@ i=1;
                 }
 
                 location = Context.getProgramWorkflowService().getPatientProgram(patient_program_id).getLocation();
+                programEnrollmentdate = Context.getProgramWorkflowService().getPatientProgram(patient_program_id).getDateEnrolled();
                 stateconc = Context.getProgramWorkflowService().getState(state).getConcept();
 
 
+        // println("${i}.  Patient Program: ${patient_program_id}. patient State: ${state}. Start  Date: ${start_date}. End date: ${end_date}. creator Id: ${creator_id}.  date created: ${date_created}. Patient: ${patient}. Creator: ${creator}.  Location: ${location}. State Concept: ${stateconc}. Date changed:  ${date_changed}");
             //creating ecounter
             Encounter enc = new Encounter();
             enc.setEncounterType(MHEncounterType);
             enc.setPatient(patient);
             enc.setLocation(location);
-            enc.setEncounterDatetime(start_date);
+            if(start_date){
+                enc.setEncounterDatetime(start_date);
+            }else{
+                enc.setEncounterDatetime(programEnrollmentdate);
+            }
             enc.setProvider(creator);
             enc.setDateCreated(date_created);
             enc.setForm(MHDiagnosisform);
@@ -47,7 +53,11 @@ i=1;
             ob.setPerson(person.getPerson(patient));
             ob.setConcept(MHDConcQuestion);
             ob.setEncounter(encounter.getEncounter(diagnosisEnc));
-            ob.setObsDatetime(start_date);
+            if(start_date){
+                ob.setObsDatetime(start_date);
+            }else{
+                ob.setObsDatetime(programEnrollmentdate);
+            }
             ob.setDateCreated(date_created);
             ob.setLocation(location);
             ob.setValueCoded(stateconc);
@@ -80,7 +90,14 @@ i=1;
 
         }
 
-println("end of changes");
+println("end");
+
+
+
+
+
+
+
 
 
 println("Is this a primary diagnosis Concept: ${IsPDConcQuestion}");
