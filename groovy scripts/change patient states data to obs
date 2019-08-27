@@ -70,7 +70,7 @@ i=1;
                 Obs stoppingReasonObs  = new Obs();
                 stoppingReasonObs.setPerson(person.getPerson(patient));
                 stoppingReasonObs.setConcept(StopRConc);
-                stoppingReasonObs.setEncounter(diagnosisEnc);
+                stoppingReasonObs.setEncounter(encounter.getEncounter(diagnosisEnc));
                 stoppingReasonObs.setObsDatetime(end_date);
                 stoppingReasonObs.setDateCreated(date_changed);
                 stoppingReasonObs.setLocation(location);
