@@ -1,12 +1,12 @@
 import org.openmrs.Encounter
- questionConc=concept.getConcept("ABDOMINAL EXAM FINDINGS")
+ questionConc=concept.getConcept("Mental Health Diagnosis")
 
 
 wrongConc = concept.getConcept("ABDOMINAL EXAM FINDINGS")
 rightConc = concept.getConcept("NO ABDOMINAL TENDERNESS")
 
  //encounterTypes
- pdcEnc=encounter.getEncounterType("HEART FAILURE VISIT")
+ pdcEnc=encounter.getEncounterType("Mental Health visit")
  enTypes=[pdcEnc]
 
 enc=encounter.getEncounters(null,null,null,null,null,enTypes,null,null,null,false)
@@ -23,7 +23,7 @@ enc=encounter.getEncounters(null,null,null,null,null,enTypes,null,null,null,fals
                 println "Question: ${obser.concept} "
                 println "answer: ${obser.valueCoded}<br />"
                 obser.setValueCoded(rightConc)
-                obs.saveObs(obser,"Changed obs Valuecoded due to wrong form concept mapping on heart failure enrollment form");
+                obs.saveObs(obser,"Changed obs Value coded due to change form concept mapping to mental health ICD-10 concept");
 
 
          i++;
